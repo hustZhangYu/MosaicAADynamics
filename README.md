@@ -29,27 +29,23 @@ The **extended proportion** refers to the fraction of extended states within the
 Wavepacket dynamics can be studied by solving the time-dependent Schrödinger equation:
 
 $$
-\[
 \frac{d}{dt} \Psi(x,t) = \hat{H} \Psi(x,t)
-\]
 $$
 
-Where \( \hat{H} \) is the Hamiltonian operator for the system, and \( \Psi(x,t) \) is the wavefunction at position \(x\) and time \(t\).
+Where $ ( \hat{H} ) $ is the Hamiltonian operator for the system, and $( \Psi(x,t) )$ is the wavefunction at position $(x)$ and time $(t)$.
 
-- **Initial Conditions**: We typically start with a Gaussian wavepacket localized at some position \(x_0\).
+- **Initial Conditions**: We typically start with a Gaussian wavepacket localized at some position $(x_0)$.
   
 - **Propagation**: The time evolution shows how the wavepacket spreads or remains localized, which is crucial for understanding transport properties.
 
-#### Time Evolution of \( \langle x^2 \rangle \)
-The time evolution of the mean squared displacement, \( \langle x^2 \rangle \), is an important quantity in studying the spreading of the wavepacket. It is given by:
+#### Time Evolution of $ \langle x^2 \rangle $
+The time evolution of the mean squared displacement, $ \langle x^2 \rangle $, is an important quantity in studying the spreading of the wavepacket. It is given by:
 
 $$
-\[
-\langle x^2 \rangle (t) = \int x^2 |\Psi(x,t)|^2 dx
-\]
+\langle \Psi(t) | x^2 |\Psi(t) \rangle 
 $$
-- In the **extended phase**, the wavepacket spreads diffusively, leading to a linear increase in \( \langle x^2 \rangle \) over time.
-- In the **localized phase**, the wavepacket remains confined, and \( \langle x^2 \rangle \) shows little or no growth.
+- In the **extended phase**, the wavepacket spreads diffusively, leading to a linear increase in $\langle x^2 \rangle$ over time.
+- In the **localized phase**, the wavepacket remains confined, and $ \langle x^2 \rangle $ shows little or no growth.
 
 This behavior helps differentiate between extended and localized states.
 
@@ -60,11 +56,11 @@ The particle number imbalance is an indicator of the distribution of particles a
 
 - **Particle Imbalance** can be quantified as the difference in particle density between two regions of the system:
   
-\[
+$$
 I = \frac{N_L - N_R}{N_L + N_R}
-\]
+$$
 
-Where \(N_L\) and \(N_R\) are the number of particles in the left and right regions, respectively.
+Where $N_L$ and $N_R$ are the number of particles in the left and right regions, respectively.
 
 #### Particle Distribution
 We also examine the spatial distribution of particles in the system. This can provide insight into the localization or delocalization of the particles.
