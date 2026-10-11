@@ -1,3 +1,8 @@
+from pathlib import Path
+
+# Legacy launchers pass their own data/output directory.
+DATA_DIR = Path(globals().get('DATA_DIR', Path(__file__).resolve().parent))
+
 from matplotlib import pyplot as plt
 import numpy as np
 import scipy.io
@@ -7,19 +12,19 @@ import scipy.io
 # plt.rc('font', **{'family': 'serif', 'serif': ['Times New Roman']})
 
 # 加载数据
-data1 = scipy.io.loadmat('psialleff.mat')
+data1 = scipy.io.loadmat(DATA_DIR / 'psialleff.mat')
 variable_name1 = 'psiall'
 matrix_data1 = data1[variable_name1]
 
-data2 = scipy.io.loadmat('psiallrea.mat')
+data2 = scipy.io.loadmat(DATA_DIR / 'psiallrea.mat')
 variable_name2 = 'psiallb'
 matrix_data2 = data2[variable_name2]
 
-data3 = scipy.io.loadmat('psiallrea_2.mat')
+data3 = scipy.io.loadmat(DATA_DIR / 'psiallrea_2.mat')
 variable_name3 = 'psiall'
 matrix_data3 = data3[variable_name3]
 
-data4 = scipy.io.loadmat('psiallrea_1.mat')
+data4 = scipy.io.loadmat(DATA_DIR / 'psiallrea_1.mat')
 variable_name4 = 'psiall'
 matrix_data4 = data4[variable_name4]
 
@@ -127,6 +132,8 @@ plt.subplots_adjust(hspace=0, wspace=0)  # 你可以根据需要调整这些值
 # 自动调整布局，使子图不重叠
 # plt.tight_layout()
 
-plt.savefig('plot.png', dpi=300)
+plt.savefig(DATA_DIR / 'plot.png', dpi=300)
 # 显示图像
 plt.show()
+
+
