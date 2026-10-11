@@ -96,6 +96,9 @@ semilogx(T_all,Data(6,:),'-','Color',c,'linewidth',1.5)
 hold on;
 
 
+interval = 30;
+markerIndices = 1:interval:length(T_all);
+
 x=T_all;y1=Data(1,:);
 c=[237,173,197]/255;
 a1=semilogx(x(markerIndices), 20*ones(1,length(markerIndices))+y1(markerIndices), '-+', 'MarkerSize', 8,'Color',c, 'LineWidth', 1.5);
@@ -204,5 +207,7 @@ xlim([10^(-3),10^5])
 ylabel('$N_h(t)$','interpreter','latex','fontsize',18)
 xlabel('$\lambda/t$','interpreter','latex','fontsize',18)
 set(gca,'fontsize',18)
+
+
 
 

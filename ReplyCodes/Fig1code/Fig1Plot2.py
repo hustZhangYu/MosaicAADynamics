@@ -1,3 +1,8 @@
+from pathlib import Path
+
+# Legacy launchers pass their own data/output directory.
+DATA_DIR = Path(globals().get('DATA_DIR', Path(__file__).resolve().parent))
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -81,11 +86,13 @@ plt.ylim(-5, 5)
 # 设置legend
 # plt.legend(['$\lambda^{-1}$', '$-\lambda^{-1}$'], fontsize=16)  # legend字体大小
 
-plt.savefig('EVIpr_plot.png', dpi=300, bbox_inches='tight')
+plt.savefig(DATA_DIR / 'EVIpr_plot.png', dpi=300, bbox_inches='tight')
 
 plt.show()
 
 # 保存数据
-np.save('Dlambda.npy', lambda_all)
-np.save('DDataA.npy', DataA)
-np.save('DDataB.npy', -np.log(DataB) / np.log(L))
+np.save(DATA_DIR / 'Dlambda.npy', lambda_all)
+np.save(DATA_DIR / 'DDataA.npy', DataA)
+np.save(DATA_DIR / 'DDataB.npy', -np.log(DataB) / np.log(L))
+
+

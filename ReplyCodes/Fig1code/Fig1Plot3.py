@@ -1,3 +1,8 @@
+from pathlib import Path
+
+# Legacy launchers pass their own data/output directory.
+DATA_DIR = Path(globals().get('DATA_DIR', Path(__file__).resolve().parent))
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.linalg import eigh
@@ -78,10 +83,12 @@ plt.tick_params(axis='both', labelsize=30)
 plt.grid(True)
 plt.tight_layout()
 
-plt.savefig('N.png', dpi=300, bbox_inches='tight')  # 保存为 PNG 格式，dpi 300 高质量，裁剪边界
+plt.savefig(DATA_DIR / 'N.png', dpi=300, bbox_inches='tight')  # 保存为 PNG 格式，dpi 300 高质量，裁剪边界
 plt.show()
 
 # 保存数据
-np.save('ENlambda.npy', lambda_all)
-np.save('ENdata.npy', Data / L)
+np.save(DATA_DIR / 'ENlambda.npy', lambda_all)
+np.save(DATA_DIR / 'ENdata.npy', Data / L)
+
+
 

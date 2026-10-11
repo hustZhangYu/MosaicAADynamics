@@ -1,9 +1,14 @@
+from pathlib import Path
+
+# Legacy launchers pass their own data/output directory.
+DATA_DIR = Path(globals().get('DATA_DIR', Path(__file__).resolve().parent))
+
 import matplotlib.pyplot as plt
 from matplotlib import image as mpimg
 import matplotlib.gridspec as gridspec
 
 # 假设你有多个 PNG 文件
-eps_files = ['EVIpr_plot.png', 'N.png', 'plot.png']
+eps_files = [DATA_DIR / name for name in ['EVIpr_plot.png', 'N.png', 'plot.png']]
 
 # 创建图形
 fig = plt.figure(figsize=(12, 8))  # 设置图形的整体尺寸
@@ -40,7 +45,9 @@ ax3.axis('off')
 plt.subplots_adjust(left=0.1,  right=0.9, top=0.85, bottom=0.15, hspace=0.01, wspace=0.01)
 
 # 保存拼接后的图像为一个新的 PNG 文件
-plt.savefig('merged_output.png', format='png')
+plt.savefig(DATA_DIR / 'merged_output.png', format='png')
 
 # 显示合成后的图像
 plt.show()
+
+

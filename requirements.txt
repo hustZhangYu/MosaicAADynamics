@@ -1,0 +1,5 @@
+# Python figure scripts; original dependency versions are not recorded.
+matplotlib
+numpy
+scipy
+

@@ -1,14 +1,19 @@
+from pathlib import Path
+
+# Legacy launchers pass their own data/output directory.
+DATA_DIR = Path(globals().get('DATA_DIR', Path(__file__).resolve().parent))
+
 # We plot figure 1
 from matplotlib import pyplot as plt
 import numpy as np
 import scipy.io
 
 # 加载数据
-data1 = scipy.io.loadmat('psialleff.mat')
+data1 = scipy.io.loadmat(DATA_DIR / 'psialleff.mat')
 variable_name1 = 'psiall'
 matrix_data1 = data1[variable_name1]
 
-data2 = scipy.io.loadmat('psiallrea.mat')
+data2 = scipy.io.loadmat(DATA_DIR / 'psiallrea.mat')
 variable_name2 = 'psiallb'
 matrix_data2 = data2[variable_name2]
 
@@ -84,3 +89,4 @@ plt.subplots_adjust(hspace=0.01, wspace=0.2)  # 你可以根据需要调整这�
 
 # 显示图像
 plt.show()
+

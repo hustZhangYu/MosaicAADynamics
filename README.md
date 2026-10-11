@@ -1,6 +1,66 @@
 # Mosaic AA Dynamics
 In this study, we explore the dynamics of the Mosaic AA model, focusing on the construction of its effective Hamiltonian. Our primary goal is to analyze the underlying physical properties through numerical simulations, and to derive a better understanding of the model’s behavior under various conditions.
 
+
+## Code and figure entry points
+
+| Location | Purpose |
+| --- | --- |
+| `MosaicAA/MobilityEdge.m` | MATLAB spectrum/IPR parameter sweep |
+| `MosaicAA/ExtendedNumber.m` | Extended-state fraction |
+| `EffectiveHamiltonian/EffectiveHamiltonian.m` | Effective-Hamiltonian construction and comparison |
+| `EffectiveHamiltonian/CompareEigenvalue.m`, `CompareIPR.m` | Comparison helpers |
+| `NumericalResults/ParticleNumberDistribution/` | Imbalance and occupation dynamics |
+| `NumericalResults/WavepacketDynamics/Dynamics.m`, `WPDynamicsX2.m` | Wavepacket calculations |
+| `ReplyCodes/EarlyX2/` | Additional early-time comparisons |
+| `ReplyCodes/Fig1code/Fig1Plot*.py` | Shared Python figure implementations |
+| `NumericalResults/WavepacketDynamics/Fig1Plot*.py` | Historical launchers for those same implementations |
+
+MATLAB research scripts have their parameters in the source. Run them from their
+own directory so any relative data writes stay with the experiment. The
+`Dynamics.m` scripts save `psiallrea_2.mat`; they do not generate every input
+used by the Python composite figure scripts.
+
+For Python figures, from the repository root:
+
+```sh
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests
+python ReplyCodes/Fig1code/Fig1Plot1.py
+```
+
+The last command reads the four adjacent `psiall*.mat` inputs and writes
+`plot.png` beside them. The stored MAT variable names are `psiall` and
+`psiallb`. `Fig1Plot2.py` generates the spectrum/IPR image and DData arrays;
+`Fig1Plot3.py` generates the extended-state image and ENdata arrays.
+`Fig1Plot4.py` combines `EVIpr_plot.png`, `N.png`, and `plot.png`, so run the
+generators first if those images are absent. Default eigenvalue sweeps use
+large dense matrices; they are research runs rather than quick smoke tests.
+
+## Shared implementations and data
+
+The six Python files in `NumericalResults/WavepacketDynamics/` had the same
+executable Python syntax trees as their counterparts in `ReplyCodes/Fig1code/`.
+They now delegate to one implementation and retain their original paths.
+Launching either path reads and writes beside that entry point, regardless
+of the terminal's current directory. Existing figure/data files remain in both
+locations, including the nine byte-identical NPY/MAT files; duplicate copies
+have not been removed because the stored research and review contexts matter.
+
+The two MATLAB `Dynamics.m` copies also have the same executable statements.
+They remain separate pending a MATLAB script/function compatibility check;
+run them from their own directories to retain the current data-output location.
+`leftoccupied.m` now defines its marker-index vector locally, so its plot no
+longer depends on first running another script in the MATLAB workspace.
+`Test.py` is a wavepacket/eigenbasis exploration script and displays figures;
+its name does not imply an automated test suite.
+
+Python dependency versions and the MATLAB release are not recorded in the
+original repository. The dependency list states imports used by the figures;
+it is not a historical environment lockfile. The discussion below preserves
+the project's research narrative; regenerated results still require scientific
+review.
+
 ## Numerical Results
 This section presents the numerical simulations that were conducted, which highlight key properties of the Mosaic AA model. We examine wavepacket dynamics, particle distributions, and the mobility edge.
 
@@ -89,6 +149,7 @@ In finite systems, the results can be affected by the system size. Finite size s
 ## Reply Codes
 In this section, we provide code snippets that address questions raised by the referees during the review process. These codes are focused on:
 - **Additional Simulations**: Addressing any additional simulations or analyses requested by the reviewers.
+
 
 
 
